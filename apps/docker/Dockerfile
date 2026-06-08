@@ -86,7 +86,6 @@ RUN --mount=type=cache,target=/ccache,sharing=locked \
     # makes sense to mount into the container, but this way we can let the build
     # have the information it needs without including the hundreds of megabytes
     # of git repo into the container.
-    --mount=type=bind,target=/azerothcore/.git,source=.git \
     git config --global --add safe.directory /azerothcore \
     && cmake /azerothcore \
        -DCMAKE_INSTALL_PREFIX="/azerothcore/env/dist"  \
