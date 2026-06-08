@@ -81,11 +81,6 @@ ARG CACHEBUST=1
 WORKDIR /azerothcore/build
 
 RUN --mount=type=cache,target=/ccache,sharing=locked \
-    # This may seem silly (and it is), but AzerothCore wants the git repo at
-    # build time. The git repo is _huge_ and it's not something that really
-    # makes sense to mount into the container, but this way we can let the build
-    # have the information it needs without including the hundreds of megabytes
-    # of git repo into the container.
     git config --global --add safe.directory /azerothcore \
     && cmake /azerothcore \
        -DCMAKE_INSTALL_PREFIX="/azerothcore/env/dist"  \
